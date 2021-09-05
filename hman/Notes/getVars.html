@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>GetVars</title>
+		<script type="text/javascript">
+			
+			function getVars(addr) {
+				var tmp = addr;
+				var pos, pos2, varname, varval;
+
+				pos = tmp.indexOf("?");		// Are there vars?
+				if (pos == -1)
+					tmp = "";
+				else
+					tmp = tmp.substring(pos+1);
+
+				while (tmp.length > 0) {
+					pos = tmp.indexOf("=");     // get var name
+					varname = tmp.substring(0,pos);
+
+					pos2 = tmp.indexOf("&");    // get var value
+					if (pos2==-1) {		// if at end of string, or no vars
+						varval = tmp.substring(pos+1);
+						tmp = "";
+					}
+					else {			// if not last var
+						varval = tmp.substring(pos+1, pos2);
+						tmp = tmp.substring(pos2+1); // discard processed string
+					}				
+					document.write(varname + ": " + varval + "<br />"); // print results
+				}
+			}
+			
+			function getVar(addr, key) {
+				var tmp = addr;
+				var pos, pos2, varname, varval;
+
+				pos = tmp.indexOf("?");		// Are there vars?
+				if (pos == -1)
+					tmp = "";
+				else
+					tmp = tmp.substring(pos+1);
+
+				while (tmp.length > 0) {
+					pos = tmp.indexOf("=");     // get var name
+					varname = tmp.substring(0,pos);
+
+					pos2 = tmp.indexOf("&");    // get var value
+					if (pos2==-1) {		// if at end of string, or no vars
+						varval = tmp.substring(pos+1);
+						tmp = "";
+					}
+					else {			// if not last var
+						varval = tmp.substring(pos+1, pos2);
+						tmp = tmp.substring(pos2+1); // discard processed string
+					}				
+					// document.write(varname + ": " + varval + "<br />"); // print results
+					if (key == varname)
+						return varval;
+				}
+				return "";
+			}
+		</script>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+		  var addr = "www.frc.com?var1=2&var3=7asdre1&varv=biscuit";
+		  var kee = "varv";
+
+		  getVars(addr);
+		  document.write("<br><br>" + kee + ": <b>" + getVar(addr, kee) + "</b><br>");
+
+		</script>
+
+	</body>
+</html>

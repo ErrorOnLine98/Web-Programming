@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Hangman Documentation</title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>Hangman Game Documentation</h1>
+<h5>Adam King CS2270</h5>
+<p>
+	At the start of the project, I was optimistic about how I was going to implement the various javascript functions that we went over in class.
+	I started out with activePg, and then added the various javascript functions like getVar(addr, key), setVar(addr, key, value), wordBlendr(seekrit, rite), btnGuess_onclick(), and printIMG(num). 
+	btnGuess_onclick was difficult to work out. Yet, it is probably the simplest to implement, since all that would need to be done would be to use it as an onclick event in a button input. 
+	By far the most difficult piece of the puzzle was figuring out how to pass variables into the address bar to successive reloads of the hman.htm page.
+	This problem was something I could never figure out, even after almost 10 hours of messing around with the setVar and getVar functions and going back and experimenting with how the files done in class, activePg.html and getVars.html, implemented it.
+	The hman.htm that is linked in my homework page is the mishmashed spaghetti code that resulted. It does have some basic functionality that could later on be used to successfully create a hangman game. 
+	btnGuess_onclick can check whether the input is a single letter, and will prompt the user to enter one if the input was not a single letter. It can also check that the input is an alphabetical letter using regex, and it will prompt the user to enter an alphabetical letter if the user entered something else. 
+	The form itself functions as expected, and btnGuess_onclick performs when the button is clicked without any errors. 
+	The CSS choices were rather simple. I made sure to center-align text and give the various features of my page like the label and heading text padding. I center-aligned the heading text, and I used a nice blue background color that I liked.
+	I used floats to make sure things stayed where I wanted them to, and also made use of block display so that the button wasn't placed in a weird position. Also, I made the heading text stand out with a grey color and a text shadow.
+</p>
+<strong>The hman.htm and css appendices are in the www folder as txt files.</strong>
+</body>
+</html>

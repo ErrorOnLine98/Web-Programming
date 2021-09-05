@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Hangman</title>
+		<meta charset="utf-8">
+		<link href="hman.css" rel="stylesheet">
+		<script type="text/javascript">
+			
+			function wordBlendr(wrd1, wrd2) {
+				var pos;
+				var ary = new Array();
+
+				len2 = wrd2.length; len1 = wrd1.length;
+				ary.length = len1;
+				for (i=0; i<len1; i++) {     // Initialize ary
+					ary[i] = "*";
+				}
+				for (i=0; i<len2; i++) {     // For each char in word2
+					char = wrd2.charAt(i);     //   get char
+					pos = wrd1.indexOf(char);  //   get its position
+					while (pos != -1) {
+						ary[pos] = char;
+						pos = wrd1.indexOf(char, pos+1);  // get new position
+					}
+				}
+
+				for (i=0; i<len1; i++)  {    // Print out array contents
+					document.write(ary[i]);
+				}
+			}
+			
+			function getVars(addr) {
+				var tmp = addr;
+				var pos, pos2, varname, varval;
+
+				pos = tmp.indexOf("?");		// Are there vars?
+				if (pos == -1)
+					tmp = "";
+				else
+					tmp = tmp.substring(pos+1);
+
+				while (tmp.length > 0) {
+					pos = tmp.indexOf("=");     // get var name
+					varname = tmp.substring(0,pos);
+
+					pos2 = tmp.indexOf("&");    // get var value
+					if (pos2==-1) {		// if at end of string, or no vars
+						varval = tmp.substring(pos+1);
+						tmp = "";
+					}
+					else {			// if not last var
+						varval = tmp.substring(pos+1, pos2);
+						tmp = tmp.substring(pos2+1); // discard processed string
+					}				
+					document.write(varname + ": " + varval + "<br />"); // print results
+				}
+			}
+			
+			function getVar(addr, key) {
+				var tmp = addr;
+				var pos, pos2, varname, varval;
+
+				pos = tmp.indexOf("?");		// Are there vars?
+				if (pos == -1)
+					tmp = "";
+				else
+					tmp = tmp.substring(pos+1);
+
+				while (tmp.length > 0) {
+					pos = tmp.indexOf("=");     // get var name
+					varname = tmp.substring(0,pos);
+
+					pos2 = tmp.indexOf("&");    // get var value
+					if (pos2==-1) {		// if at end of string, or no vars
+						varval = tmp.substring(pos+1);
+						tmp = "";
+					}
+					else {			// if not last var
+						varval = tmp.substring(pos+1, pos2);
+						tmp = tmp.substring(pos2+1); // discard processed string
+					}				
+					if (key == varname)
+						return varval;
+				}
+				return "";
+			}
+			
+			function setVar(addr, key, val) {
+			  var tmp = addr.toLowerCase();
+			  var blnQuest = false;
+			  var pos, pos2, varname, varval;
+
+			  key=key.toLowerCase();
+			  blnQuest = (tmp.indexOf("?") > -1);
+
+			  if (blnQuest) {       	// found '?'
+				pos = tmp.indexOf(key + "=");
+				if (pos > -1) {     	// found key
+				  pos = pos + key.length + 1;
+				  pos2 = tmp.indexOf("&", pos+1);
+				  if (pos2 > -1) {  	// found '&'
+					tmp = tmp.substring(0, pos) + val + tmp.substring(pos2); }
+				  else {   		// no &; it is last var
+					tmp = tmp.substring(0, pos) + val; }
+				}
+				else {		// key not in variable-string; add to end
+				  tmp = addr + "&" + key + "=" + val;
+				}
+			  }
+			  else {  		// no vars; add onto end of addr
+				tmp = addr + "?" + key + "=" + val;
+			  }
+			  return tmp; 
+			}
+			
+			function btnGuess_onclick() {
+				var guess = document.getElementById("textguess").value;
+				var seekrit = document.getElementById("seekrit").value;
+				var strAddr = window.location.href;
+				
+				guess = guess.trim();
+				
+				if (guess.length != 1) {
+					alert("Enter a single letter!");
+				}
+				else 
+					if (/^[a-zA-Z]/.test(guess)) { // Checks for alphabetical letters
+						guess = guess.toLowerCase(); // Converts string to lowercase
+						if (seekrit.includes(guess)) 
+							rite += guess;				// Adds guess to rite
+						else 
+							rong += guess;				// Adds guess to rong
+							
+						setVar(strAddr, "rite", rite);
+						setVar(strAddr, "rong", rong);
+						nuAddr = window.location.href;
+					}
+					else
+						alert("Enter an alphabetical letter!");	
+			}
+			
+			function printIMG(num) {
+				
+				if (num > 10)
+				num = 14;
+				
+				document.write("<img src='HIMG/H" + num + ".GIF'><br />");
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>Hangman</h1>
+		<form name="hmguess">
+			<label for="textguess">Guess a letter:</label>
+			<textarea name="textguess" id="textguess" rows="1"></textarea>
+			<input type="hidden" name="seekrit" id="seekrit" value="bombastic">
+			<input type="button" value="Enter Letter" name="btnGuess" onclick="btnGuess_onclick()">
+		</form>
+		
+		<script type="text/javascript">
+			var strAddr, pos;
+			var rite = [];
+			var rong = [];
+			var seekrit = document.getElementById("seekrit");
+			
+			strAddr = window.location.href;
+
+			//if (strAddr.indexOf("?") == -1) {
+				//printIMG(cliks);
+				//document.write("Page: " + cliks + "<br />");
+			//}
+			//else {
+				//pos = strAddr.indexOf("cliks=");
+				//cliks = parseInt(strAddr.substring(pos+6));
+				//printIMG(cliks);
+				//document.write("Page " + cliks + "<br>");
+			//}
+			
+		</script>
+	</body>
+</html>
