@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Addition</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		var firstNumber = parseFloat(prompt("Enter the first number", "")) // Added parseFloat so firstNumber outputs as a float instead of a string
+		var secondNumber = parseFloat(prompt("Enter the second number", "")) // Added parseFloat so secondNumber outputs as a float instead of a string
+		var theTotal = firstNumber + secondNumber;
+		document.write(firstNumber + " added to " + secondNumber + " equals " + theTotal + ".");
+	</script>
+	<!-- The only mistake with the code was that the prompts would 
+	output as strings instead of numbers, so when written onto the page 
+	they were concatenated as strings. Thus, 2 + 2 would result in 22 
+	instead of 4. I used parseFloat instead of parseInt so that the 
+	program would be able to add decimal numbers as well for added 
+	functionality. Also, <!DOCTYPE html> and <meta charset="utf-8"> were 
+	added, but their absence in the original code was not the cause of 
+	the issue. -->
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Cent2Fahrenheit</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var degFahr;
+		var degCent = prompt("Enter degrees in Celsius:", );
+		
+		if (isNaN(parseInt(degCent)))
+			document.write(degCent + " is not a number!");
+		else {
+			degFahr = 9/5 * degCent + 32;
+			document.write(degCent + "\xB0 Celsius is " + degFahr +
+			"\xB0 Fahrenheit. ");
+		}
+	</script>
+</body>
+</html>
