@@ -1,0 +1,75 @@
+* { box-sizing: border-box; }
+header, nav, main, footer { display: block; }
+body { background-color: #FCEBB6; 
+	   background-image: url(background.gif); 
+	   color: #221811; 
+	   font-family: Verdana, Arial, sans-serif; }
+main { background-color: #FEF6C2; 
+	   padding-right: 0; 
+	   padding-left: 0; 
+	   padding-top: 0; 
+	   padding-bottom: 2em; 
+	   margin-left: 200px; 
+	   display: block; }
+main h2 { padding-right: 2em; 
+		  padding-left: 3em; }
+main h3 { padding-right: 2em; 
+		  padding-left: 3em; }
+main h4 { padding-right: 2em; 
+		  padding-left: 3em; }
+main p { padding-right: 2em; 
+		  padding-left: 3em; }
+main div { padding-right: 2em; 
+		  padding-left: 3em; }
+main ul { padding-right: 2em; 
+		  padding-left: 3em; }
+main dl { padding-right: 2em; 
+		  padding-left: 3em; }
+header { background-color: #D2B48C; 
+		 height: 150px; 
+		 background-image: url(javajamlogo.jpg); 
+		 background-repeat: no-repeat; }
+h1 { padding-top: 45px; padding-left: 220px; font-size: 3em; }
+h4 { background-color: #D2B48C; 
+	 font-size: 1.2em; 
+	 padding-left: 10px; 
+	 padding-bottom: 0; 
+	 border-bottom: 1px solid #000000; 
+	 text-transform: uppercase; 
+	 clear: left; }
+nav { text-align: center; 
+	  font-weight: bold; 
+	  font-size: 1.5em; 
+	  padding-top: 10px; 
+	  float: left; 
+	  width: 200px; }
+nav a { text-decoration: none; }
+nav a:link { color: #FEF6C2; }
+nav a:visited { color: #D2B48C; }
+nav a:hover { color: #CC9933; }
+nav ul { padding-left: 0; list-style-type: none; }
+footer { background-color: #D2B48C; 
+		 text-align: center; 
+		 font-size: .60em; 
+		 font-style: italic; 
+		 padding-bottom: 10px; 
+		 border-top: 2px solid #221811; }
+img { padding-right: 10px; padding-left: 10px; }
+.details { padding-right: 20%; padding-left: 20%; overflow: auto; }
+.floatleft { float: left; padding-right: 20px; padding-bottom: 20px; }
+#wrapper { background-color: #231814; 
+		   width: 80%; 
+		   min-width: 900px; 
+		   max-width: 1280px; 
+		   margin-right: auto; 
+		   margin-left: auto; 
+		   box-shadow: 5px 5px 5px #333; }
+#heroroad { background-image: url(heroroad.jpg); 
+			background-size: 100%; 
+			height: 250px; }
+#heromugs { background-image: url(heromugs.jpg); 
+			background-size: 100%; 
+			height: 250px; }
+#heroguitar { background-image: url(heroguitar.jpg); 
+			background-size: 100%; 
+			height: 250px; }
